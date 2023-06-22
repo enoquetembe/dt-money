@@ -1,5 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'phosphor-react'
+import { TransactionType } from './TransactionType'
 
 export function NewTransactionModal() {
   return (
@@ -37,6 +38,8 @@ export function NewTransactionModal() {
             placeholder="Category"
             required
           />
+
+          <TransactionType />
 
           <button
             className="h-14 bg-green-500 font-bold text-white rounded-md 
