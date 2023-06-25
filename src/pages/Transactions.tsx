@@ -1,10 +1,14 @@
+import { useContext } from 'react'
 import { Header } from '../components/Header'
 import { PriceHighLight } from '../components/PriceHighlight'
 import { SearchForm } from '../components/SearchForm'
 import { Summary } from '../components/Summary'
 import { TableData } from '../components/TableData'
+import { TransactionsContext } from '../contexts/TransactionsContext'
 
 export function Transactions() {
+  const { transactions } = useContext(TransactionsContext)
+
   return (
     <div>
       <Header />
@@ -16,29 +20,19 @@ export function Transactions() {
           border-spacing-y-2"
         >
           <tbody>
-            <tr>
-              <TableData width="50%">Website Development</TableData>
-              <TableData>
-                <PriceHighLight variant="income">$ 100,00</PriceHighLight>
-              </TableData>
-              <TableData>Sell</TableData>
-            </tr>
-
-            <tr>
-              <TableData width="50%">Debt</TableData>
-              <TableData>
-                <PriceHighLight variant="outcome">-$ 50,00</PriceHighLight>
-              </TableData>
-              <TableData>Sold</TableData>
-            </tr>
-
-            <tr>
-              <TableData width="50%">Website Development</TableData>
-              <TableData>
-                <PriceHighLight variant="income">$ 100,00</PriceHighLight>
-              </TableData>
-              <TableData>Sell</TableData>
-            </tr>
+            {transactions.map((transaction) => {
+              return (
+                <tr key={transaction.id}>
+                  <TableData width="50%">{transaction.description}</TableData>
+                  <TableData>
+                    <PriceHighLight variant={transaction.type}>
+                      {transaction.price}
+                    </PriceHighLight>
+                  </TableData>
+                  <TableData>{transaction.category}</TableData>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </section>

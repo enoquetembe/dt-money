@@ -1,0 +1,21 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Website development",
+      "type": "income",
+      "category": "Sell",
+      "price": "100",
+      "createdAt": "2023-06-25T20:00:55.076Z"
+    },
+
+    {
+      "id": 2,
+      "description": "Bought a mouse",
+      "type": "outcome",
+      "category": "Purchase",
+      "price": "20",
+      "createdAt": "2023-06-25T20:03:16.552Z"
+    }
+  ] 
+}
