@@ -1,10 +1,9 @@
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from 'phosphor-react'
-import { useContext } from 'react'
-import { TransactionsContext } from '../contexts/TransactionsContext'
+import { priceFormatter } from '../utils/formatter'
+import { useSummary } from '../hooks/useSummary'
 
 export function Summary() {
-  const { transactions } = useContext(TransactionsContext)
-
+  const summary = useSummary()
   return (
     <section>
       <div
@@ -17,7 +16,9 @@ export function Summary() {
             <ArrowCircleUp size={32} className="text-green-300" />
           </header>
 
-          <strong className="block mt-4 text-4xl">$ 17.200,00</strong>
+          <strong className="block mt-4 text-4xl">
+            {priceFormatter.format(summary.income)}
+          </strong>
         </div>
 
         <div className="bg-gray-600 rounded-md p-8">
@@ -26,7 +27,9 @@ export function Summary() {
             <ArrowCircleDown size={32} className="text-red-300" />
           </header>
 
-          <strong className="block mt-4 text-4xl">$ 17.200,00</strong>
+          <strong className="block mt-4 text-4xl">
+            {priceFormatter.format(summary.outcome)}
+          </strong>
         </div>
 
         <div className="bg-green-700 rounded-md p-8">
@@ -35,7 +38,9 @@ export function Summary() {
             <CurrencyDollar size={32} className="text-white" />
           </header>
 
-          <strong className="block mt-4 text-4xl">$ 17.200,00</strong>
+          <strong className="block mt-4 text-4xl">
+            {priceFormatter.format(summary.total)}
+          </strong>
         </div>
       </div>
     </section>
