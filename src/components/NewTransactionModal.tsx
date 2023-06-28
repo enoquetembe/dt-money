@@ -5,6 +5,8 @@ import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { TransactionTypeButton } from './TransactionTypeButton'
+import { useContext } from 'react'
+import { TransactionsContext } from '../contexts/TransactionsContext'
 
 const createNewTransactionSchema = z.object({
   description: z.string(),
@@ -16,14 +18,24 @@ const createNewTransactionSchema = z.object({
 type NewTransactionFormInputs = z.infer<typeof createNewTransactionSchema>
 
 export function NewTransactionModal() {
-  const { control, register, handleSubmit } = useForm<NewTransactionFormInputs>(
-    {
+  const { createNewTransaction } = useContext(TransactionsContext)
+
+  const { control, register, handleSubmit, reset } =
+    useForm<NewTransactionFormInputs>({
       resolver: zodResolver(createNewTransactionSchema),
-    },
-  )
+    })
 
   function handleCreateNewTransaction(data: NewTransactionFormInputs) {
-    console.log(data)
+    const { description, type, category, price } = data
+
+    createNewTransaction({
+      description,
+      type,
+      category,
+      price,
+    })
+
+    reset()
   }
 
   return (
