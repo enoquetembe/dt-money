@@ -16,30 +16,29 @@ export function Transactions() {
       <Summary />
       <section className="max-w-[1120px] w-full mx-auto my-16 px-6">
         <SearchForm />
-        <table
-          className="w-full mt-6  border-separate border-spacing-x-0 
-          border-spacing-y-2"
-        >
-          <tbody>
-            {transactions.map((transaction) => {
-              return (
-                <tr key={transaction.id}>
-                  <TableData width="50%">{transaction.description}</TableData>
-                  <TableData>
-                    <PriceHighLight variant={transaction.type}>
-                      {transaction.type === 'outcome' && '- '}
-                      {priceFormatter.format(transaction.price)}
-                    </PriceHighLight>
-                  </TableData>
-                  <TableData>{transaction.category}</TableData>
-                  <TableData>
-                    {dateFormatter.format(new Date(transaction.createdAt))}
-                  </TableData>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+        <div className="overflow-x-auto">
+          <table className="w-full mt-6  border-separate border-spacing-x-0 border-spacing-y-2">
+            <tbody>
+              {transactions.map((transaction) => {
+                return (
+                  <tr key={transaction.id}>
+                    <TableData width="50%">{transaction.description}</TableData>
+                    <TableData>
+                      <PriceHighLight variant={transaction.type}>
+                        {transaction.type === 'outcome' && '- '}
+                        {priceFormatter.format(transaction.price)}
+                      </PriceHighLight>
+                    </TableData>
+                    <TableData>{transaction.category}</TableData>
+                    <TableData>
+                      {dateFormatter.format(new Date(transaction.createdAt))}
+                    </TableData>
+                  </tr>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
       </section>
     </div>
   )

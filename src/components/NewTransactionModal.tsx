@@ -45,8 +45,8 @@ export function NewTransactionModal() {
       bg-[#00000075]"
       />
       <Dialog.Content
-        className="bg-gray-800 min-w-[32rem] fixed top-1/2 
-        left-1/2 translation rounded-md py-10 px-12"
+        className="bg-gray-800 min-w-[20rem] max-w-[32rem] w-full fixed top-1/2 
+        left-1/2 translation rounded-md py-10 px-12 "
       >
         <Dialog.Title className="font-bold text-base">
           New transaction
