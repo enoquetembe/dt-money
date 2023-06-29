@@ -20,7 +20,7 @@ type NewTransactionFormInputs = z.infer<typeof createNewTransactionSchema>
 export function NewTransactionModal() {
   const { createNewTransaction } = useContext(TransactionsContext)
 
-  const { control, register, handleSubmit, reset } =
+  const { control, register, handleSubmit, reset, setValue } =
     useForm<NewTransactionFormInputs>({
       resolver: zodResolver(createNewTransactionSchema),
     })
@@ -38,6 +38,9 @@ export function NewTransactionModal() {
     reset()
   }
 
+  const handleValueChange = (value: 'income' | 'outcome') => {
+    setValue('type', value)
+  }
   return (
     <Dialog.Portal>
       <Dialog.Overlay
@@ -86,7 +89,7 @@ export function NewTransactionModal() {
             render={({ field }) => {
               return (
                 <RadioGroup.Root
-                  onValueChange={field.onChange}
+                  onValueChange={handleValueChange}
                   value={field.value}
                   className="grid grid-cols-2 gap-4 mt-2"
                 >
