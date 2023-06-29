@@ -17,36 +17,12 @@
       "createdAt": "2023-06-25T20:03:16.552Z"
     },
     {
-      "description": "Hamburguer",
+      "description": "Hamburger",
       "type": "outcome",
       "category": "Food",
       "price": 20,
       "createdAt": "2023-06-28T19:45:37.615Z",
       "id": 3
-    },
-    {
-      "description": "aa",
-      "type": "outcome",
-      "category": "Food",
-      "price": 100,
-      "createdAt": "2023-06-29T17:27:10.699Z",
-      "id": 4
-    },
-    {
-      "description": "A",
-      "type": "income",
-      "category": "dd",
-      "price": 200,
-      "createdAt": "2023-06-29T17:28:13.476Z",
-      "id": 5
-    },
-    {
-      "description": "mmm",
-      "type": "outcome",
-      "category": "Food",
-      "price": 100,
-      "createdAt": "2023-06-29T17:28:38.727Z",
-      "id": 6
     }
   ]
 }
